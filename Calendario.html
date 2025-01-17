@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Actividades Escolares 2024</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos generales */
+        body {
+            display: flex;
+            flex-direction: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('Imagenes/RINO F.png') no-repeat center center fixed;
+            background-repeat: no-repeat;
+            background-position: left center;
+            /* Coloca la imagen al lado izquierdo */
+            background-size: contain;
+            /* Reduce el tamaño de la imagen */
+            color: #690505;
+        }
+
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+            gap: 10px;
+            margin-top: 70px;
+            margin-bottom: 60px;
+        }
+
+        .month {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            flex: 0 1 calc(20% - 10px);
+            border: 2.5px solid #000;
+            transition: transform 0.3s ease-in-out;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .month img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .expanded-image {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            background-color: white;
+            border: 2px solid #690505;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .expanded-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .top-bar {
+            background-color: #690505;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            padding: 0 10px;
+        }
+
+        .golden-container {
+            background-color: #d19b4b;
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .golden-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            /* Reduce el tamaño del texto */
+            cursor: pointer;
+            padding: 6px 10px;
+            /* Ajusta el espacio interno */
+            width: auto;
+            /* O define un ancho fijo si lo deseas */
+            height: auto;
+            /* O define una altura fija si es necesario */
+        }
+
+        #menu-bar {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #f5f5f5;
+            color: black;
+            border: 2px solid #690505;
+            display: none;
+            z-index: 200;
+            width: 250px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        #menu-bar .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #a36b17;
+            color: white;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #menu-bar .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu-bar ul li {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #menu-bar ul li:last-child {
+            border-bottom: none;
+        }
+
+        #menu-bar ul li:hover {
+            background-color: #a36b17;
+        }
+
+        #menu-bar ul li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        #menu-bar .footer {
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #690505;
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            z-index: 100;
+        }
+
+        .bottom-bar span {
+            margin: 0 10px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 1200px) {
+            .month {
+                flex: 0 1 calc(25% - 10px);
+            }
+
+            .static-image-container img {
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .month {
+                flex: 0 1 calc(33.33% - 10px);
+            }
+
+            .static-image-container img {
+                max-width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .month {
+                flex: 0 1 calc(50% - 10px);
+            }
+
+            .static-image-container img {
+                max-width: 40%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .month {
+                flex: 0 1 calc(100% - 10px);
+            }
+
+            .static-image-container img {
+                max-width: 30%;
+            }
+        }
+
+        .center-text {
+            flex: 1;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="center-text">Calendario Escolar</div>
+        <div class="golden-container">
+            <button id="menu-button">☰</button>
+        </div>
+        <div id="menu-bar">
+            <!-- Información del usuario -->
+            <div class="user-info">
+                <img src="Imagenes/Icono final.png" alt="Avatar">
+                <div>Carla Alejandra Mercado de la Cruz</div>
+                <div>203107181</div>
+            </div>
+            <!-- Menú -->
+            <ul>
+                <li onclick="window.location.href='Menú alumno.html'">
+                    <img src="Imagenes/Inicio Menú.png" alt=> Inicio
+                </li>
+                <li onclick="window.location.href='Calendario.html'">
+                    <img src="Imagenes/Calendario.png" alt=> Calendario
+                </li>
+                <li onclick="window.location.href='Eventos.html'">
+                    <img src="Imagenes/Eventos.png" alt=> Eventos
+                </li>
+                <li onclick="window.location.href='AsisTESCI.html'">
+                    <img src="Imagenes/AsisTESCI.png" alt=> AsisTESCI
+                </li>
+                <li onclick="window.location.href='Mi Perfil.html'">
+                    <img src="Imagenes/Perfil.png" alt=> Mi perfil
+                </li>
+                <li onclick="window.location.href='RinoApp.html'">
+                    <img src="Imagenes/Cerrar sesion.png" alt=> Cerrar sesión
+                </li>
+            </ul>
+            <!-- Pie de contacto -->
+            <div class="footer">
+                Contáctanos<br>
+                difusion@cuautitlan.tecnm.mx
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contenedor del calendario -->
+    <div class="calendar-container">
+        <div class="month" id="febrero"><img src="Imagenes/febrero.jpg" alt="Febrero"></div>
+        <div class="month" id="marzo"><img src="Imagenes/marzo.jpg" alt="Marzo"></div>
+        <div class="month" id="abril"><img src="Imagenes/abril.jpg" alt="Abril"></div>
+        <div class="month" id="mayo"><img src="Imagenes/mayo.jpg" alt="Mayo"></div>
+        <div class="month" id="junio"><img src="Imagenes/junio.jpg" alt="Junio"></div>
+        <div class="month" id="julio"><img src="Imagenes/julio.jpg" alt="Julio"></div>
+        <div class="month" id="agosto"><img src="Imagenes/agosto.jpg" alt="Agosto"></div>
+        <div class="month" id="septiembre"><img src="Imagenes/septiembre.jpg" alt="Septiembre"></div>
+        <div class="month" id="octubre"><img src="Imagenes/octubre.jpg" alt="Octubre"></div>
+        <div class="month" id="noviembre"><img src="Imagenes/noviembre.jpg" alt="Noviembre"></div>
+        <div class="month" id="diciembre"><img src="Imagenes/diciembre.jpg" alt="Diciembre"></div>
+        <div class="month" id="enero"><img src="Imagenes/enero 2025.jpg" alt="Enero 2025"></div>
+    </div>
+
+    <!-- Imagen expandida -->
+    <div class="expanded-image" id="expanded-image">
+        <img src="" alt="Mes expandido">
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <span>© 2024 Actividades Escolares</span>
+        <span>|</span>
+        <span>Contacto: info@escuela.com</span>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuButton = document.getElementById("menu-button");
+            const menuBar = document.getElementById("menu-bar");
+            const expandedImage = document.getElementById("expanded-image");
+            const expandedImageContent = expandedImage.querySelector("img");
+
+            // Alternar el menú desplegable
+            menuButton.addEventListener("click", () => {
+                menuBar.style.display = menuBar.style.display === "block" ? "none" : "block";
+            });
+
+
+            // Manejo de expansión de imagen
+            const months = document.querySelectorAll(".month");
+            months.forEach(month => {
+                month.addEventListener("click", () => {
+                    const img = month.querySelector("img");
+                    expandedImageContent.src = img.src;
+                    expandedImage.style.display = "flex";
+                });
+            });
+
+            // Cerrar la imagen expandida al hacer clic en ella
+            expandedImage.addEventListener("click", () => {
+                expandedImage.style.display = "none";
+            });
+
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener("click", (event) => {
+                if (!menuBar.contains(event.target) && event.target !== menuButton) {
+                    menuBar.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

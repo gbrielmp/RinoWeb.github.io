@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos generales */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: url('Imagenes/RINO F.png') no-repeat center center fixed;
+            background-position: left center;
+            background-size: contain;
+            color: #690505;
+        }
+
+        .barra-superior,
+        .barra-inferior {
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            position: fixed;
+            left: 0;
+            z-index: 1000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .barra-superior {
+            top: 0;
+        }
+
+        .barra-inferior {
+            bottom: 0;
+        }
+
+        .container {
+            background-color: #ffffffe6;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 80px;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #690505;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .menu-image {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-image:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #d19b4b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .menu-button:hover {
+            background-color: #b98237;
+        }
+
+        .menu-button:active {
+            background-color: #996a2a;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Barra superior -->
+    <div class="barra-superior"></div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1>RinoApp</h1>
+
+        <!-- Botón de Calendario -->
+        <div class="menu-item">
+            <a href="Admin Calendario.html">
+                <img src="C:\xampp\htdocs\Pagina Tesci\Imagenes\Calendario.png" alt="Calendario" class="menu-image">
+            </a>
+            <p class="menu-text">Calendario</p>
+        </div>
+
+        <!-- Botón de Creación de Eventos -->
+        <div class="menu-item">
+            <a href="Creación de eventos.html">
+                <img src="C:\xampp\htdocs\Pagina Tesci\Imagenes\Eventos.png" alt="Creación de eventos" class="menu-image">
+            </a>
+            <p class="menu-text">Creacion de eventos</p>
+        </div>
+
+        <!-- Botón de Centro de Soporte -->
+        <div class="menu-item">
+            <a href="Centro de soporte.html">
+                <img src="C:\xampp\htdocs\Pagina Tesci\Imagenes\AsisTESCI.png" alt="Centro de soporte" class="menu-image">
+            </a>
+            <p class="menu-text">Centro de soporte</p>
+        </div>
+
+        <!-- Botón de Cerrar Sesión -->
+        <a href="RinoApp.html" class="menu-button" style="background-color: #690505; margin-top: 20px;">Cerrar sesión</a>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <span>© 2024 Actividades Escolares</span>
+        <span>|</span>
+        <span>Contacto: info@escuela.com</span>
+    </div>
+</body>
+
+</html>

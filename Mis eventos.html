@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis eventos</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #690505;
+            background: url('Imagenes/RINO F2.png') no-repeat center center fixed;
+            background-position: left center;
+            background-size: contain;
+        }
+
+        .top-bar {
+            background-color: #690505;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            padding: 0 10px;
+        }
+
+        .golden-container {
+            background-color: #d19b4b;
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .golden-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 10px;
+        }
+
+        #menu-bar {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #f5f5f5;
+            color: black;
+            border: 2px solid #690505;
+            display: none;
+            z-index: 200;
+            width: 250px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        #menu-bar .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #a36b17;
+            color: white;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #menu-bar .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu-bar ul li {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #menu-bar ul li:last-child {
+            border-bottom: none;
+        }
+
+        #menu-bar ul li:hover {
+            background-color: #a36b17;
+        }
+
+        #menu-bar ul li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        #menu-bar .footer {
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #690505;
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+        .event-list {
+            margin-top: 60px;
+            background-color: #d19b4b;
+            padding: 20px;
+            width: 100%;
+            max-width: none;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .event {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: calc(100% - 40px);
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .event h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .event p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .event small {
+            display: block;
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .event .delete-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .event .delete-btn:hover {
+            background-color: #c9302c;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="golden-container">
+            <button id="menu-button">☰</button>
+        </div>
+    </div>
+
+    <div id="menu-bar">
+        <div class="user-info">
+            <img src="Imagenes/Icono final.png" alt="Avatar">
+            <div>Administrador</div>
+            <div>ADM-01-2025</div>
+        </div>
+        <ul>
+            <li onclick="window.location.href='Menú Administrador.html'">
+                <img src="Imagenes/Inicio Menú.png" alt=""> Inicio
+            </li>
+            <li onclick="window.location.href='Admin Calendario.html'">
+                <img src="Imagenes/Calendario.png" alt=""> Calendario
+            </li>
+            <li onclick="window.location.href='Creación de eventos.html'">
+                <img src="Imagenes/Eventos.png" alt=""> Creación de eventos
+            </li>
+            <li onclick="window.location.href='Centro de soporte.html'">
+                <img src="Imagenes/AsisTESCI.png" alt=""> Centro de soporte
+            </li>
+        </ul>
+        <div class="footer">
+            Contáctanos<br>
+            deftechnology@gmail.com
+        </div>
+    </div>
+
+    <div class="event-list" id="events-container">
+        <h2></h2>
+    </div>
+
+    <div class="bottom-bar">
+        <span>© 2024 Avisos Importantes</span>
+        <span>|</span>
+        <span>Contacto: info@escuela.com</span>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const menuBar = document.getElementById('menu-bar');
+
+        menuButton.addEventListener('click', () => {
+            menuBar.style.display = menuBar.style.display === 'none' || menuBar.style.display === '' ? 'block' : 'none';
+        });
+
+        const events = JSON.parse(localStorage.getItem("events")) || [];
+        const eventsContainer = document.getElementById("events-container");
+
+        function renderEvents() {
+            eventsContainer.innerHTML = "<h2>Lista de eventos</h2>";
+            if (events.length === 0) {
+                eventsContainer.innerHTML += "<p>No hay eventos disponibles.</p>";
+            } else {
+                events.forEach((event, index) => {
+                    const eventDiv = document.createElement("div");
+                    eventDiv.classList.add("event");
+                    eventDiv.innerHTML = `
+                        <h3>${event.title}</h3>
+                        <p>${event.description}</p>
+                        <small>Fecha: ${event.date} | Hora: ${event.time}</small>
+                        <button class="delete-btn" onclick="deleteEvent(${index})">Eliminar</button>
+                    `;
+                    eventsContainer.appendChild(eventDiv);
+                });
+            }
+        }
+
+        function deleteEvent(index) {
+            if (confirm("¿Estás seguro de que deseas eliminar este evento?")) {
+                events.splice(index, 1);
+                localStorage.setItem("events", JSON.stringify(events));
+                renderEvents();
+            }
+        }
+
+        renderEvents();
+    </script>
+</body>
+
+</html>

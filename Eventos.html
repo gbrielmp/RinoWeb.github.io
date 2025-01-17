@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #690505;
+            background: url('Imagenes/RINO F2.png') no-repeat center center fixed;
+            background-repeat: no-repeat;
+            background-position: left center;
+            /* Coloca la imagen al lado izquierdo */
+            background-size: contain;
+        }
+
+        .top-bar {
+            background-color: #690505;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            padding: 0 10px;
+        }
+
+        .golden-container {
+            background-color: #d19b4b;
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .golden-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            /* Reduce el tamaño del texto */
+            cursor: pointer;
+            padding: 6px 10px;
+            /* Ajusta el espacio interno */
+            width: auto;
+            /* O define un ancho fijo si lo deseas */
+            height: auto;
+            /* O define una altura fija si es necesario */
+        }
+
+        #menu-bar {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #f5f5f5;
+            color: black;
+            border: 2px solid #690505;
+            display: none;
+            z-index: 200;
+            width: 250px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        #menu-bar .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #a36b17;
+            color: white;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #menu-bar .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu-bar ul li {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #menu-bar ul li:last-child {
+            border-bottom: none;
+        }
+
+        #menu-bar ul li:hover {
+            background-color: #a36b17;
+        }
+
+        #menu-bar ul li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        #menu-bar .footer {
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #690505;
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+
+        /* Contenedor de avisos */
+        .avisos-container {
+            margin: 60px 10px 60px 10px;
+        }
+
+        .aviso {
+            background-color: #d19b4b;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .aviso-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .aviso-date {
+            color: #690505;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .event-list {
+            margin-top: 60px;
+            background-color: #d19b4b;
+            padding: 20px;
+            width: 100%;
+            max-width: none;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .event {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: calc(100% - 40px);
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .event h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .event p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .event small {
+            display: block;
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .event .delete-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        /* Barra inferior */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            z-index: 100;
+        }
+
+        .bottom-bar span {
+            margin: 0 10px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .aviso {
+                font-size: 14px;
+            }
+
+            .center-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .aviso {
+                font-size: 12px;
+            }
+        }
+
+        .center-text {
+            flex: 1;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <div class="center-text">Eventos</div>
+        <div class="golden-container">
+            <button id="menu-button">☰</button>
+        </div>
+        <div id="menu-bar">
+            <!-- Información del usuario -->
+            <div class="user-info">
+                <img src="Imagenes/Icono final.png" alt="Avatar">
+                <div>Carla Alejandra Mercado de la Cruz</div>
+                <div>203107181</div>
+            </div>
+            <!-- Menú -->
+            <ul>
+                <li onclick="window.location.href='Menú alumno.html'">
+                    <img src="Imagenes/Inicio Menú.png" alt=> Inicio
+                </li>
+                <li onclick="window.location.href='Calendario.html'">
+                    <img src="Imagenes/Calendario.png" alt=> Calendario
+                </li>
+                <li onclick="window.location.href='Eventos.html'">
+                    <img src="Imagenes/Eventos.png" alt=> Eventos
+                </li>
+                <li onclick="window.location.href='AsisTESCI.html'">
+                    <img src="Imagenes/AsisTESCI.png" alt=> AsisTESCI
+                </li>
+                <li onclick="window.location.href='Mi Perfil.html'">
+                    <img src="Imagenes/Perfil.png" alt=> Mi perfil
+                </li>
+                <li onclick="window.location.href='RinoApp.html'">
+                    <img src="Imagenes/Cerrar sesion.png" alt=> Cerrar sesión
+                </li>
+            </ul>
+            <!-- Pie de contacto -->
+            <div class="footer">
+                Contáctanos<br>
+                difusion@cuautitlan.tecnm.mx
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <span>© 2024 Avisos Importantes</span>
+        <span>|</span>
+        <span>Contacto: info@escuela.com</span>
+    </div>
+
+    <div class="event-list" id="events-container">
+        <h2>Lista de eventos</h2>
+    </div>
+    
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const menuBar = document.getElementById('menu-bar');
+
+        menuButton.addEventListener('click', () => {
+            menuBar.style.display = menuBar.style.display === 'none' || menuBar.style.display === '' ? 'block' : 'none';
+        });
+
+        const events = JSON.parse(localStorage.getItem("events")) || [];
+        const eventsContainer = document.getElementById("events-container");
+
+        function renderEvents() {
+            eventsContainer.innerHTML = "<h2>Lista de eventos</h2>";
+            if (events.length === 0) {
+                eventsContainer.innerHTML += "<p>No hay eventos disponibles.</p>";
+            } else {
+                events.forEach((event, index) => {
+                    const eventDiv = document.createElement("div");
+                    eventDiv.classList.add("event");
+                    eventDiv.innerHTML = `
+                <h3>${event.title}</h3>
+                <p>${event.description}</p>
+                <small>Fecha: ${event.date} | Hora: ${event.time}</small>
+            `;
+                    eventsContainer.appendChild(eventDiv);
+                });
+            }
+        }
+
+        renderEvents();
+    </script>
+</body>
+
+</html>

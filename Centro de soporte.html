@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Con qué podemos ayudarte?</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #5a4a4a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 60px; /* Para evitar superposición con la barra superior */
+            margin-bottom: 60px; /* Para evitar superposición con la barra inferior */
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #8c6b3f;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .guide-link {
+            color: #8c001a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .guide-link:hover {
+            text-decoration: underline;
+        }
+
+        .email-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .email-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .email-link {
+            color: #8c001a;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Barra superior */
+        .top-bar {
+            background-color: #690505;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            padding: 0 10px;
+        }
+
+        .golden-container {
+            background-color: #d19b4b;
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .golden-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 10px;
+        }
+
+        /* Menú desplegable */
+        #menu-bar {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #f5f5f5;
+            color: black;
+            border: 2px solid #690505;
+            display: none;
+            z-index: 200;
+            width: 250px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        #menu-bar .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #a36b17;
+            color: white;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #menu-bar .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu-bar ul li {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #menu-bar ul li:last-child {
+            border-bottom: none;
+        }
+
+        #menu-bar ul li:hover {
+            background-color: #a36b17;
+        }
+
+        #menu-bar ul li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        #menu-bar .footer {
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #690505;
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Barra inferior */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <div class="golden-container">
+            <button id="menu-button">☰</button>
+        </div>
+    </div>
+
+    <!-- Menú desplegable -->
+    <div id="menu-bar">
+        <div class="user-info">
+            <img src="Imagenes/Icono final.png" alt="Avatar">
+            <div>Administrador</div>
+            <div>ADM-01-2025</div>
+        </div>
+        <ul>
+            <li onclick="window.location.href='Menú Administrador.html'">
+                <img src="Imagenes/Inicio Menú.png" alt=""> Inicio
+            </li>
+            <li onclick="window.location.href='Admin Calendario.html'">
+                <img src="Imagenes/Calendario.png" alt=""> Calendario
+            </li>
+            <li onclick="window.location.href='Creación de eventos.html'">
+                <img src="Imagenes/Eventos.png" alt=""> Creación de eventos
+            </li>
+            <li onclick="window.location.href='Centro de soporte.html'">
+                <img src="Imagenes/AsisTESCI.png" alt=""> Centro de soporte
+            </li>
+        </ul>
+        <div class="footer">
+            Contáctanos<br>
+            deftechnology@gmail.com
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1>¿Con qué podemos ayudarte?</h1>
+        <p><em>¿Estás experimentando problemas con la plataforma?</em></p>
+        <p>
+            Ingresa a nuestra <a href="#" class="guide-link">guía personalizada de uso</a>
+        </p>
+        <p>O puedes contactarnos a través de nuestro correo electrónico con mayores detalles de tu problema</p>
+        <div class="email-section">
+            <img src="Imagenes/Inicio Menú.png" alt="Icono de correo" class="email-icon">
+            <a href="mailto:deftechnology@gmail.com" class="email-link">deftechnology@gmail.com</a>
+        </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <span>© 2024 Avisos Importantes</span>
+        <span>|</span>
+        <span>Contacto: info@escuela.com</span>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const menuBar = document.getElementById('menu-bar');
+
+        menuButton.addEventListener('click', () => {
+            menuBar.style.display = menuBar.style.display === 'none' || menuBar.style.display === '' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

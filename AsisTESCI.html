@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsisTESCI</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #690505;
+            background: url('Imagenes/RINO F2.png') no-repeat center center fixed;
+            background-position: left center;
+            background-size: contain;
+        }
+
+        .top-bar {
+            background-color: #690505;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            padding: 0 10px;
+        }
+
+        .golden-container {
+            background-color: #d19b4b;
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .golden-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 10px;
+        }
+
+        #menu-bar {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #f5f5f5;
+            color: black;
+            border: 2px solid #690505;
+            display: none;
+            z-index: 200;
+            width: 250px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        #menu-bar .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #a36b17;
+            color: white;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #menu-bar .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu-bar ul li {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #menu-bar ul li:last-child {
+            border-bottom: none;
+        }
+
+        #menu-bar ul li:hover {
+            background-color: #a36b17;
+        }
+
+        #menu-bar ul li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        #menu-bar .footer {
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #690505;
+            font-size: 12px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #690505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            z-index: 100;
+        }
+
+        /* Chat AsisTESCI */
+        .chat-container {
+            max-width: 600px;
+            margin: 80px auto 80px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #d4a372;
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .chat-content {
+            padding: 20px;
+            color: #555;
+        }
+
+        .chat-message p {
+            margin: 10px 0;
+        }
+
+        .chat-message ul {
+            padding-left: 20px;
+        }
+
+        .chat-footer {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .chat-footer button {
+            background-color: #d23159;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .chat-footer button:hover {
+            background-color: #b11e4a;
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                margin: 60px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <div class="center-text">Calendario Escolar</div>
+        <div class="golden-container">
+            <button id="menu-button">☰</button>
+        </div>
+        <div id="menu-bar">
+            <!-- Información del usuario -->
+            <div class="user-info">
+                <img src="Imagenes/Icono final.png" alt="Avatar">
+                <div>Carla Alejandra Mercado de la Cruz</div>
+                <div>203107181</div>
+            </div>
+            <!-- Menú -->
+            <ul>
+                <li onclick="window.location.href='Menú alumno.html'">
+                    <img src="Imagenes/Inicio Menú.png" alt=> Inicio
+                </li>
+                <li onclick="window.location.href='Calendario.html'">
+                    <img src="Imagenes/Calendario.png" alt=> Calendario
+                </li>
+                <li onclick="window.location.href='Eventos.html'">
+                    <img src="Imagenes/Eventos.png" alt=> Eventos
+                </li>
+                <li onclick="window.location.href='AsisTESCI.html'">
+                    <img src="Imagenes/AsisTESCI.png" alt=> AsisTESCI
+                </li>
+                <li onclick="window.location.href='Mi Perfil.html'">
+                    <img src="Imagenes/Perfil.png" alt=> Mi perfil
+                </li>
+                <li onclick="window.location.href='RinoApp.html'">
+                    <img src="Imagenes/Cerrar sesion.png" alt=> Cerrar sesión
+                </li>
+            </ul>
+            <!-- Pie de contacto -->
+            <div class="footer">
+                Contáctanos<br>
+                difusion@cuautitlan.tecnm.mx
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat AsisTESCI -->
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>¡Hola!</h1>
+        </header>
+        <div class="chat-content">
+            <div class="chat-message">
+                <p><strong>AsisTESCI:</strong> ¡Hola Rino! ¿En qué podemos asistirte hoy?</p>
+                <p>Selecciona una opción:</p>
+                <ul>
+                    <li>1 – Contactos de servicio</li>
+                    <li>2 – ¿Cómo saber mi horario?</li>
+                    <li>3 – Ubicación de edificios</li>
+                </ul>
+            </div>
+            <div id="response"></div>
+        </div>
+        <footer class="chat-footer">
+            <input type="text" id="userInput" placeholder="Escribe aquí tu respuesta">
+            <button id="sendButton">Enviar</button>
+        </footer>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <span>© 2024 Avisos Importantes</span>
+        <span>|</span>
+        <span>Contacto: info@escuela.com</span>
+    </div>
+
+    <script>
+        // Funcionalidad del menú desplegable
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuButton = document.getElementById("menu-button");
+            const menuBar = document.getElementById("menu-bar");
+
+            menuButton.addEventListener("click", () => {
+                menuBar.style.display = menuBar.style.display === "block" ? "none" : "block";
+            });
+
+            document.addEventListener("click", (event) => {
+                if (!menuBar.contains(event.target) && event.target !== menuButton) {
+                    menuBar.style.display = "none";
+                }
+            });
+        });
+
+        // Respuestas predefinidas del chat
+        const responses = {
+            1: "Puedes comunicarte con el departamento de Servicios Escolares al correo difusion@cuautitlan.tecnm.mx.",
+            2: "Consulta tu horario en el portal oficial: https://tesci.edomex.gob.mx.",
+            3: "El edificio principal está ubicado en el centro del campus, junto a la biblioteca.",
+        };
+
+        // Funcionalidad del chat
+        document.getElementById('sendButton').addEventListener('click', function () {
+            const userInput = document.getElementById('userInput').value;
+            const responseDiv = document.getElementById('response');
+
+            if (!userInput || isNaN(userInput) || !responses[userInput]) {
+                responseDiv.innerHTML = `<p><strong>AsisTESCI:</strong> Por favor, selecciona una opción válida (1, 2 o 3).</p>`;
+            } else {
+                responseDiv.innerHTML = `<p><strong>AsisTESCI:</strong> ${responses[userInput]}</p>`;
+            }
+
+            document.getElementById('userInput').value = "";
+        });
+    </script>
+</body>
+
+</html>
